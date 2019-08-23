@@ -18,10 +18,17 @@ export class AppComponent implements OnInit {
     //create observable variable by adding "$"
     let kounter$ = interval(9000);
     //subscribe to kounter$
-    kounter$.subscribe(evh =>{
+    const unkounter$ = kounter$.subscribe(evh =>{
       console.log(`${kount} from interval$`)
       kount++;
     })
+    //the subscribe() returns an observable we can use to unsubscribe
+    setTimeout(()=>{
+      unkounter$.unsubscribe();
+      console.log("unsubscribed from kounter$")
+      console.log("no further events...")
+    }, 33000)
+
 
   }
 }
