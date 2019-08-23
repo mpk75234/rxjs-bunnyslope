@@ -14,5 +14,14 @@ export class AppComponent implements OnInit {
     document.addEventListener('click', evh =>{
       console.log("VAN HALEN! " + evh);
     })
+    let kount = 79;
+    //create observable variable by adding "$"
+    let kounter$ = interval(9000);
+    //subscribe to kounter$
+    kounter$.subscribe(evh =>{
+      console.log(`${kount} from interval$`)
+      kount++;
+    })
+
   }
 }
